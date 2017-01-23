@@ -169,7 +169,20 @@ end
 # {'a' => 'b', 'c' => 'd'} becomes
 # {'b' => 'a', 'd' => 'c'}
 def swap_keys_and_values_in_a_hash(hash)
+  hash.update(hash) { |k, v|
+    p k
+    p v
+    puts "here"
+    v, k = k, v
+    p k
+    p v
+  }
+  p hash
+hash
 end
+
+# hash.update(hash)
+# { a: 'a', b: 'b' }.map { |k, str| [k, "%#{str}%"] }.to_h
 
 # in a hash where the keys and values are all numbers
 # add all the keys and all the values together, e.g.
