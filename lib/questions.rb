@@ -169,45 +169,49 @@ end
 # {'a' => 'b', 'c' => 'd'} becomes
 # {'b' => 'a', 'd' => 'c'}
 def swap_keys_and_values_in_a_hash(hash)
-  hash.update(hash) { |k, v|
-    p k
-    p v
-    puts "here"
-    v, k = k, v
-    p k
-    p v
-  }
-  p hash
-hash
+  hash.invert
 end
-
-# hash.update(hash)
-# { a: 'a', b: 'b' }.map { |k, str| [k, "%#{str}%"] }.to_h
 
 # in a hash where the keys and values are all numbers
 # add all the keys and all the values together, e.g.
 # {1 => 1, 2 => 2} becomes 6
 def add_together_keys_and_values(hash)
+  vals = []
+  hash.each do |k, v|
+    vals << k
+    vals << v
+  end
+  vals.reduce(0, :+)
 end
 
 # take out all the capital letters from a string
 # so 'Hello JohnDoe' becomes 'ello ohnoe'
 def remove_capital_letters_from_string(string)
+  new_string = ""
+  string.each_char do |c|
+    if c == c.downcase
+      new_string << c
+    end
+  end
+  new_string
 end
 
 # round up a float up and convert it to an Integer,
 # so 3.214 becomes 4
 def round_up_number(float)
+  float.to_i
 end
 
 # round down a float up and convert it to an Integer,
 # so 9.52 becomes 9
 def round_down_number(float)
+  float.floor.to_i
 end
 
 # take a date and format it like dd/mm/yyyy, so Halloween 2013
 # becomes 31/10/2013
 def format_date_nicely(date)
+  date.day.to_s + '/' + date.month.to_s + '/' + date.year.to_s
 end
 
 # get the domain name *without* the .com part, from an email address
