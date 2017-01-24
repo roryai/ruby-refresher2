@@ -151,7 +151,7 @@ describe 'the Friday test :)' do
     expect(n).to eq 4
   end
 
-  it 'format_date_nicely', :focus => true do
+  it 'format_date_nicely' do
     n = format_date_nicely Time.new(2013, 10, 31)
     expect(n).to eq '31/10/2013'
   end
@@ -166,7 +166,7 @@ describe 'the Friday test :)' do
     expect(n).to eq 'The Lion the Witch and the Wardrobe'
   end
 
-  it 'check_a_string_for_special_characters' do
+  it 'check_a_string_for_special_characters', :focus => true  do
     a = check_a_string_for_special_characters 'ABCdef123'
     b = check_a_string_for_special_characters 'ABC@def123!'
 

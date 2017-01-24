@@ -217,6 +217,9 @@ end
 # get the domain name *without* the .com part, from an email address
 # so alex@makersacademy.com becomes makersacademy
 def get_domain_name_from_email_address(email)
+  a = email.split("@").last
+  b = a.split(".").first
+  b
 end
 
 # capitalize the first letter in each word of a string,
@@ -225,13 +228,30 @@ end
 # 'the lion the witch and the wardrobe' becomes
 # 'The Lion the Witch and the Wardrobe'
 def titleize_a_string(string)
+  a = string.split(" ")
+  a.each do |x|
+    x.capitalize! if x != 'the' && x != 'and' && x != 'a'
+  end
+  a[0].capitalize!
+  a.join(" ")
 end
 
 # return true if a string contains any special characters
 # where 'special character' means anything apart from the letters
 # a-z (uppercase and lower) or numbers
 def check_a_string_for_special_characters(string)
+  a = string.split("")
+  b = nil
+  a.each do |x|
+    if !('a'..'z').include?(x) && !('A'..'Z').include?(x) && !(1..9).include?(x.to_i)
+      b = true
+    else
+      b = false
+    end
+  end
+  b
 end
+
 
 # get the upper limit of a range. e.g. for the range 1..20, you
 # should return 20
