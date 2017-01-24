@@ -168,7 +168,7 @@ describe 'the Friday test :)' do
 
   it 'check_a_string_for_special_characters', :focus => true  do
     a = check_a_string_for_special_characters 'ABCdef123'
-    b = check_a_string_for_special_characters 'ABC@def123!'
+    b = check_a_string_for_special_characters 'ABC@def12!3'
 
     expect(a).to be false
     expect(b).to be true

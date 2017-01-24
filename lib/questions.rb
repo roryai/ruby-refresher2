@@ -241,15 +241,18 @@ end
 # a-z (uppercase and lower) or numbers
 def check_a_string_for_special_characters(string)
   a = string.split("")
-  b = nil
+  count = 0
+
   a.each do |x|
-    if !('a'..'z').include?(x) && !('A'..'Z').include?(x) && !(1..9).include?(x.to_i)
-      b = true
-    else
-      b = false
-    end
+    count += 1 if !('a'..'z').include?(x) && !('A'..'Z').include?(x) && !(1..9).include?(x.to_i)
   end
-  b
+
+  if count == 0
+    return false
+  else
+    return true
+  end
+
 end
 
 
