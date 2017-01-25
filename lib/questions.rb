@@ -1,3 +1,6 @@
+require 'complex'
+include Math
+
 # keep only the elements that start with an a
 def select_elements_starting_with_a(array)
   array.select { |x| x[0] == 'a' }
@@ -259,20 +262,46 @@ end
 # get the upper limit of a range. e.g. for the range 1..20, you
 # should return 20
 def get_upper_limit_of(range)
+  count = 0
+  range.each { |x| count += 1}
+  count
 end
 
 # should return true for a 3 dot range like 1...20, false for a
 # normal 2 dot range
 def is_a_3_dot_range?(range)
+  arr = range.to_s.split("")
+  count = 0
+    arr.each do |x|
+      if x == "."
+        count += 1
+      end
+    end
+
+    if count == 3
+      return true
+    else
+      return false
+    end
 end
 
 # get the square root of a number
 def square_root_of(number)
+  sqrt(number)
 end
 
 # count the number of words in a file
 def word_count_a_file(file_path)
+  str = ""
+  File.open(file_path, 'r') do |f|
+    f.each_line do |line|
+      str << line
+    end
+  end
+  arr = str.split
+  arr.length
 end
+
 
 # --- tougher ones ---
 
